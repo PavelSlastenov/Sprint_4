@@ -1,16 +1,11 @@
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import page_object.MainPage;
 
 @RunWith(Parameterized.class)
-public class FAQSectionMainPageTest {
+public class FAQSectionMainPageTest extends BaseTest{
 
-  private WebDriver driver;
   private final String responseOne;
   private final String responseTwo;
   private final String responseThree;
@@ -48,11 +43,6 @@ public class FAQSectionMainPageTest {
     };
   }
 
-  @Before
-  public void before() {
-    driver = new FirefoxDriver();
-  }
-
   @Test
   public void checkFQASection() {
     MainPage mainPage = new MainPage(driver);
@@ -61,8 +51,4 @@ public class FAQSectionMainPageTest {
             responseSix, responseSeven, responseEight);
   }
 
-  @After
-  public void after() {
-    driver.quit();
-  }
 }

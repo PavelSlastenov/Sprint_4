@@ -6,14 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import page_object.MainPage;
 import page_object.OrderPage;
 
-public class OrderButtonsTest {
-
-  private WebDriver driver;
-
-    @Before
-    public void before() {
-        driver = new FirefoxDriver();
-    }
+public class OrderButtonsTest extends BaseTest {
 
     @Test
     public void checkOrderButtonTop() {
@@ -33,8 +26,4 @@ public class OrderButtonsTest {
         orderPage.isOrderDataHeaderVisible();
     }
 
-    @After
-    public void after() {
-        driver.quit();
-    }
 }

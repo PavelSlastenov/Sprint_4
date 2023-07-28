@@ -11,9 +11,8 @@ import page_object.OrderPage;
 
 
 @RunWith(Parameterized.class)
-public class OrderPageChromeTest {
+public class OrderPageChromeTest extends BaseTest {
 
-  private WebDriver driver;
   private final String name;
   private final String surname;
   private final String address;
@@ -46,13 +45,6 @@ public class OrderPageChromeTest {
     };
   }
 
-  @Before
-  public void before() {
-    ChromeOptions chromeOptions = new ChromeOptions();
-    chromeOptions.addArguments("--remote-allow-origins=*");
-    driver = new ChromeDriver(chromeOptions);
-  }
-
   @Test
   public void checkOrder() {
     MainPage mainPage = new MainPage(driver);
@@ -78,8 +70,4 @@ public class OrderPageChromeTest {
     orderPage.isStatusModalSuccessVisible();
   }
 
-  @After
-  public void after() {
-    driver.quit();
-  }
 }

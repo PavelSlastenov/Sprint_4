@@ -9,9 +9,8 @@ import page_object.MainPage;
 import page_object.OrderPage;
 
 @RunWith(Parameterized.class)
-public class OrderPageFireFoxTest {
+public class OrderPageFireFoxTest extends BaseTest {
 
-    private WebDriver driver;
     private final String name;
     private final String surname;
     private final String address;
@@ -43,11 +42,6 @@ public class OrderPageFireFoxTest {
         };
     }
 
-    @Before
-    public void before() {
-        driver = new FirefoxDriver();
-    }
-
     @Test
     public void checkOrder() {
         MainPage mainPage = new MainPage(driver);
@@ -73,8 +67,4 @@ public class OrderPageFireFoxTest {
         orderPage.isStatusModalSuccessVisible();
     }
 
-    @After
-    public void after() {
-        driver.quit();
-    }
 }
