@@ -6,7 +6,7 @@ import page_object.OrderPage;
 
 
 @RunWith(Parameterized.class)
-public class OrderPageChromeTest extends BaseTest {
+public class OrderPageTest extends BaseTest {
 
   private final String name;
   private final String surname;
@@ -19,8 +19,8 @@ public class OrderPageChromeTest extends BaseTest {
   private final String comment;
 
 
-  public OrderPageChromeTest(String name, String surname, String address, String station, String number,
-                             String date, String rental, String colour, String comment) {
+  public OrderPageTest(String name, String surname, String address, String station, String number,
+                       String date, String rental, String colour, String comment) {
     this.name = name;
     this.surname = surname;
     this.address = address;

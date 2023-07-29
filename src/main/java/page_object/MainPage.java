@@ -7,15 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class MainPage {
-  String QUESTION_ONE;
-  String QUESTION_TWO;
-  String QUESTION_THREE;
-  String QUESTION_FOUR;
-  String QUESTION_FIVE;
-  String QUESTION_SIX;
-  String QUESTION_SEVEN;
-  String QUESTION_EIGHT;
-
   // Url сервиса для заказа самокатов
   private static final String PAGE_URL = "https://qa-scooter.praktikum-services.ru/";
 
@@ -26,7 +17,34 @@ public class MainPage {
   private static final By ORDER_BUTTON_BOTTOM = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
 
   // Блок "Вопросы о важном"
-  private static final By QUESTION_BUTTON = By.xpath(".//div[@id='accordion__heading-0']/..");
+  // Вопросы
+  private static final By QUESTION_TEXT_ONE = By.xpath(".//div[@id='accordion__heading-0']");
+  private static final By QUESTION_TEXT_TWO = By.xpath(".//div[@id='accordion__heading-1']");
+  private static final By QUESTION_TEXT_THREE = By.xpath(".//div[@id='accordion__heading-2']");
+  private static final By QUESTION_TEXT_FOUR = By.xpath(".//div[@id='accordion__heading-3']");
+  private static final By QUESTION_TEXT_FIVE = By.xpath(".//div[@id='accordion__heading-4']");
+  private static final By QUESTION_TEXT_SIX = By.xpath(".//div[@id='accordion__heading-5']");
+  private static final By QUESTION_TEXT_SEVEN = By.xpath(".//div[@id='accordion__heading-6']");
+  private static final By QUESTION_TEXT_EIGHT = By.xpath(".//div[@id='accordion__heading-7']");
+
+  // Ответы
+  private static final By RESPONSE_WRAPPER_ONE = By.xpath(".//div[@id='accordion__heading-0']/..");
+  private static final By RESPONSE_WRAPPER_TWO = By.xpath(".//div[@id='accordion__heading-1']/..");
+  private static final By RESPONSE_WRAPPER_THREE = By.xpath(".//div[@id='accordion__heading-2']/..");
+  private static final By RESPONSE_WRAPPER_FOUR = By.xpath(".//div[@id='accordion__heading-3']/..");
+  private static final By RESPONSE_WRAPPER_FIVE = By.xpath(".//div[@id='accordion__heading-4']/..");
+  private static final By RESPONSE_WRAPPER_SIX = By.xpath(".//div[@id='accordion__heading-5']/..");
+  private static final By RESPONSE_WRAPPER_SEVEN = By.xpath(".//div[@id='accordion__heading-6']/..");
+  private static final By RESPONSE_WRAPPER_EIGHT = By.xpath(".//div[@id='accordion__heading-7']/..");
+
+  private static final By RESPONSE_TEXT_ONE = By.xpath(".//div[@id='accordion__panel-0']/p");
+  private static final By RESPONSE_TEXT_TWO = By.xpath(".//div[@id='accordion__panel-1']/p");
+  private static final By RESPONSE_TEXT_THREE = By.xpath(".//div[@id='accordion__panel-2']/p");
+  private static final By RESPONSE_TEXT_FOUR = By.xpath(".//div[@id='accordion__panel-3']/p");
+  private static final By RESPONSE_TEXT_FIVE = By.xpath(".//div[@id='accordion__panel-4']/p");
+  private static final By RESPONSE_TEXT_SIX = By.xpath(".//div[@id='accordion__panel-5']/p");
+  private static final By RESPONSE_TEXT_SEVEN = By.xpath(".//div[@id='accordion__panel-6']/p");
+  private static final By RESPONSE_TEXT_EIGHT = By.xpath(".//div[@id='accordion__panel-7']/p");
 
   private WebDriver driver;
 
@@ -51,65 +69,92 @@ public class MainPage {
     return this;
   }
 
-  public void checkFAQSection(String responseOne, String responseTwo, String responseThree, String responseFour, String responseFive,
-                                  String responseSix, String responseSeven, String responseEight) {
-    QUESTION_ONE = "Сколько это стоит? И как оплатить?";
-    QUESTION_TWO = "Хочу сразу несколько самокатов! Так можно?";
-    QUESTION_THREE = "Как рассчитывается время аренды?";
-    QUESTION_FOUR = "Можно ли заказать самокат прямо на сегодня?";
-    QUESTION_FIVE = "Можно ли продлить заказ или вернуть самокат раньше?";
-    QUESTION_SIX = "Вы привозите зарядку вместе с самокатом?";
-    QUESTION_SEVEN = "Можно ли отменить заказ?";
-    QUESTION_EIGHT = "Я жизу за МКАДом, привезёте?";
-
-    WebElement element = driver.findElement(QUESTION_BUTTON);
-    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-
-    for(int i = 0; i < 8; i++) {
-      switch (i) {
-        case 1:
-          Assert.assertEquals(QUESTION_ONE, driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 0 + "']")).getText());
-          driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 0 + "']/..")).click();
-          Assert.assertEquals(responseOne, driver.findElement(By.xpath(".//div[@id='accordion__panel-" + 0 + "']/p")).getText());
-          break;
-        case 2:
-          Assert.assertEquals(QUESTION_TWO, driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 1 + "']")).getText());
-          driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 1 + "']/..")).click();
-          Assert.assertEquals(responseTwo, driver.findElement(By.xpath(".//div[@id='accordion__panel-" + 1 + "']/p")).getText());
-          break;
-        case 3:
-          Assert.assertEquals(QUESTION_THREE, driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 2 + "']")).getText());
-          driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 2 + "']/..")).click();
-          Assert.assertEquals(responseThree, driver.findElement(By.xpath(".//div[@id='accordion__panel-" + 2 + "']/p")).getText());
-          break;
-        case 4:
-          Assert.assertEquals(QUESTION_FOUR, driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 3 + "']")).getText());
-          driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 3 + "']/..")).click();
-          Assert.assertEquals(responseFour, driver.findElement(By.xpath(".//div[@id='accordion__panel-" + 3 + "']/p")).getText());
-          break;
-        case 5:
-          Assert.assertEquals(QUESTION_FIVE, driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 4 + "']")).getText());
-          driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 4 + "']/..")).click();
-          Assert.assertEquals(responseFive, driver.findElement(By.xpath(".//div[@id='accordion__panel-" + 4 + "']/p")).getText());
-          break;
-        case 6:
-          Assert.assertEquals(QUESTION_SIX, driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 5 + "']")).getText());
-          driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 5 + "']/..")).click();
-          Assert.assertEquals(responseSix, driver.findElement(By.xpath(".//div[@id='accordion__panel-" + 5 + "']/p")).getText());
-          break;
-        case 7:
-          Assert.assertEquals(QUESTION_SEVEN, driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 6 + "']")).getText());
-          driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 6 + "']/..")).click();
-          Assert.assertEquals(responseSeven, driver.findElement(By.xpath(".//div[@id='accordion__panel-" + 6 + "']/p")).getText());
-          break;
-        case 8:
-          Assert.assertEquals(QUESTION_EIGHT, driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 7 + "']")).getText());
-          driver.findElement(By.xpath(".//div[@id='accordion__heading-" + 7 + "']/..")).click();
-          Assert.assertEquals(responseEight, driver.findElement(By.xpath(".//div[@id='accordion__panel-" + 7 + "']/p")).getText());
-          break;
-        default:
-          break;
-      }
-    }
+  public String checkQuestionOne() {
+    return driver.findElement(QUESTION_TEXT_ONE).getText();
   }
+
+  public String checkQuestionTwo() {
+    return driver.findElement(QUESTION_TEXT_TWO).getText();
+  }
+
+  public String checkQuestionThree() {
+    return driver.findElement(QUESTION_TEXT_THREE).getText();
+  }
+
+  public String checkQuestionFour() {
+    return driver.findElement(QUESTION_TEXT_FOUR).getText();
+  }
+
+  public String checkQuestionFive() {
+    return driver.findElement(QUESTION_TEXT_FIVE).getText();
+  }
+
+  public String checkQuestionSix() {
+    return driver.findElement(QUESTION_TEXT_SIX).getText();
+  }
+
+  public String checkQuestionSeven() {
+    return driver.findElement(QUESTION_TEXT_SEVEN).getText();
+  }
+
+  public String checkQuestionEight() {
+    return driver.findElement(QUESTION_TEXT_EIGHT).getText();
+  }
+
+  public String checkResponseOne() {
+    WebElement element = driver.findElement(RESPONSE_WRAPPER_ONE);
+    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+    driver.findElement(RESPONSE_WRAPPER_ONE).click();
+    return driver.findElement(RESPONSE_TEXT_ONE).getText();
+  }
+
+  public String checkResponseTwo() {
+    WebElement element = driver.findElement(RESPONSE_WRAPPER_TWO);
+    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+    driver.findElement(RESPONSE_WRAPPER_TWO).click();
+    return driver.findElement(RESPONSE_TEXT_TWO).getText();
+  }
+
+  public String checkResponseThree() {
+    WebElement element = driver.findElement(RESPONSE_WRAPPER_THREE);
+    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+    driver.findElement(RESPONSE_WRAPPER_THREE).click();
+    return driver.findElement(RESPONSE_TEXT_THREE).getText();
+  }
+
+  public String checkResponseFour() {
+    WebElement element = driver.findElement(RESPONSE_WRAPPER_FOUR);
+    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+    driver.findElement(RESPONSE_WRAPPER_FOUR).click();
+    return driver.findElement(RESPONSE_TEXT_FOUR).getText();
+  }
+
+  public String checkResponseFive() {
+    WebElement element = driver.findElement(RESPONSE_WRAPPER_FIVE);
+    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+    driver.findElement(RESPONSE_WRAPPER_FIVE).click();
+    return driver.findElement(RESPONSE_TEXT_FIVE).getText();
+  }
+
+  public String checkResponseSix() {
+    WebElement element = driver.findElement(RESPONSE_WRAPPER_SIX);
+    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+    driver.findElement(RESPONSE_WRAPPER_SIX).click();
+    return driver.findElement(RESPONSE_TEXT_SIX).getText();
+  }
+
+  public String checkResponseSeven() {
+    WebElement element = driver.findElement(RESPONSE_WRAPPER_SEVEN);
+    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+    driver.findElement(RESPONSE_WRAPPER_SEVEN).click();
+    return driver.findElement(RESPONSE_TEXT_SEVEN).getText();
+  }
+
+  public String checkResponseEight() {
+    WebElement element = driver.findElement(RESPONSE_WRAPPER_EIGHT);
+    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+    driver.findElement(RESPONSE_WRAPPER_EIGHT).click();
+    return driver.findElement(RESPONSE_TEXT_EIGHT).getText();
+  }
+
 }

@@ -1,6 +1,8 @@
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseTest {
@@ -8,7 +10,10 @@ public class BaseTest {
 
     @Before
     public void before() {
-      driver = new FirefoxDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--remote-allow-origins=*");
+      driver = new ChromeDriver();
+//      driver = new FirefoxDriver();
     }
 
     @After

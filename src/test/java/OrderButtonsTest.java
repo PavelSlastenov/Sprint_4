@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 import page_object.MainPage;
 import page_object.OrderPage;
@@ -10,7 +11,7 @@ public class OrderButtonsTest extends BaseTest {
         OrderPage orderPage = new OrderPage(driver);
         mainPage.open();
         mainPage.clickOrderStatusButtonTop();
-        orderPage.isOrderDataHeaderVisible();
+        Assert.assertTrue(orderPage.isOrderDataHeaderVisible());
     }
 
     @Test
@@ -19,7 +20,6 @@ public class OrderButtonsTest extends BaseTest {
         OrderPage orderPage = new OrderPage(driver);
         mainPage.open();
         mainPage.clickOrderStatusButtonBottom();
-        orderPage.isOrderDataHeaderVisible();
+        Assert.assertTrue(orderPage.isOrderDataHeaderVisible());
     }
-
 }
